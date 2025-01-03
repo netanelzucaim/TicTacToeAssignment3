@@ -26,7 +26,7 @@ function Square({ value, onClick }: SquareProps) {
     </button>
   );
 }
-
+//
 function Board() {
   const [array, setArray] = useState(Array(9).fill(null));
   const [isXNext, setIsXNext] = useState(true);
