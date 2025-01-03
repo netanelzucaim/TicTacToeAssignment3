@@ -1,42 +1,96 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+/* Make the body fill the screen and center the content */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  background-color: #f0f0f0;
+  font-family: 'Arial', sans-serif;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* Center the board with flexbox */
+div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px; /* Space between rows of the board */
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Style for the board container */
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 150px); /* 3 columns with 150px width */
+  grid-template-rows: repeat(3, 150px); /* 3 rows with 150px height */
+  gap: 10px; /* Space between squares */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+/* Style for each square button */
+.square {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  height: 150px;
+  background-color: #fff;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 2.5rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-weight: bold;
+  position: relative;
 }
 
-.card {
-  padding: 2em;
+/* Hover effect for squares */
+.square:hover {
+  background-color: #e0e0e0;
+  transform: scale(1.05);
 }
 
-.read-the-docs {
-  color: #888;
+/* Styling for X and O images inside squares */
+.square img {
+  width: 80%;
+  height: 80%;
+  object-fit: contain;
+}
+
+/* Styling the reset button */
+.reset-button {
+  padding: 15px 30px;
+  font-size: 1.5rem;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  margin-top: 20px;
+}
+
+/* Hover effect for the reset button */
+.reset-button:hover {
+  background-color: #45a049;
+}
+
+/* Disabled button state */
+.reset-button:disabled {
+  background-color: #d3d3d3;
+  cursor: not-allowed;
+}
+
+/* Styling winner text message */
+.winner-message {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+  margin-top: 20px;
+}
+
+/* Game board when it is full */
+.board .full {
+  background-color: #f1f1f1;
 }
