@@ -4,7 +4,7 @@ import image_x from './images/x.jpg';
 import image_circle from './images/circle.png';
 
 function isWon(input: (string | null)[]) {
-  const array = [[1, 5, 9], [3, 5, 7], [1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 4, 7], [2, 5, 8], [3, 6, 9]];
+  const array = [[0, 4, 8], [2,4,6], [0,1,2], [3,4,5], [6,7, 8], [0,3,6], [1,4,7], [2,5,8]];
   for (let i = 0; i < array.length; i++) {
     const [a, b, c] = array[i];
     if (input[a] && input[a] === input[b] && input[a] === input[c]) {
@@ -28,7 +28,7 @@ function Square({ value, onClick }: SquareProps) {
 }
 
 function Board() {
-  const [array, setArray] = useState(Array(10).fill(null));
+  const [array, setArray] = useState(Array(9).fill(null));
   const [isXNext, setIsXNext] = useState(true);
   const winner = isWon(array);
 
@@ -44,8 +44,8 @@ function Board() {
   return (
     <div>
       <div className="board">
-        {array.slice(1, 10).map((value, index) => (
-          <Square key={index + 1} value={value} onClick={() => handleClick(index + 1)} />
+        {array.map((value, index) => (
+          <Square key={index} value={value} onClick={() => handleClick(index)} />
         ))}
       </div>
 
@@ -55,7 +55,7 @@ function Board() {
       <button
         className="reset-button"
         onClick={() => {
-          setArray(Array(10).fill(null));
+          setArray(Array(9).fill(null));
           setIsXNext(true);
         }}
         disabled={!winner}
